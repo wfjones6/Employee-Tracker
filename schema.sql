@@ -42,20 +42,20 @@ VALUES ("Sales"),
        ("Finance"),
        ("Legal");
 
-INSERT INTO em_role(title) 
-VALUES ("Salesperson"), 
-       ("Engineer"),
-       ("Accountant"),
-       ("Paralegal");
+INSERT INTO em_role(title, salary, dep_id) 
+VALUES ("Sales Manager", 167342.50, 1), 
+       ("Engineer Lead", 177575.43, 2),
+       ("Lead Accountant", 100113.32, 3),
+       ("Attorney", 133333.11, 4),
+        ("Sales", 67342.50, 1), 
+       ("Engineer", 77575.43, 2),
+       ("Accountant", 100113.32, 3),
+       ("Paralegal", 33333.11, 4);
 
-INSERT INTO employee(first_name) 
-VALUES ("John"), 
-       ("L.Ron"),
-       ("Tom"),
-       ("Leah");
 
-INSERT INTO employee(last_name) 
-VALUES ("Travolta"), 
-       ("Hubbard"),
-       ("Cruise"),
-       ("Remini");
+INSERT INTO employee(first_name, last_name, role_id, manager_id) 
+VALUES ("John", "Travolta", 1), 
+       ("L.Ron", "Hubbard", 2),
+       ("Tom", "Cruise", 3),
+       ("Kirstie", "Allie", 1, 1),
+       ("Leah", "Remini", 4);
