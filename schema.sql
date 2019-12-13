@@ -59,6 +59,10 @@ VALUES ("John", "Travolta", 1),
        ("Tom", "Cruise", 3),
        ("Leah", "Remini", 4),
        ("Kirstie", "Allie", 1, 1),
+       ("Kelly", "Preston", 1, 1),
        ("Laura", "Prepon", 2, 2),
+       ("David", "Miscavige", 2, 2),
        ("Elisabeth", "Moss", 3, 3),
-        ("Juliette", "Lewis", 4, 4);
+       ("Anne", "Archer", 3, 3),
+        ("Juliette", "Lewis", 4, 4),
+        ("Danny", "Masterson", 4, 4);
