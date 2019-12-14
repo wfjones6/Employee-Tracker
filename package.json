@@ -1,0 +1,23 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "Design the following database schema containing three tables:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellyjones-jpg/Employee-Tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kellyjones-jpg/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/kellyjones-jpg/Employee-Tracker#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}

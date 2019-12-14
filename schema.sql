@@ -14,7 +14,7 @@ CREATE TABLE em_role
 (
     id INTEGER(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
     title VARCHAR(30),
-    salary DECIMAL(7,2),
+    salary DECIMAL(8,2),
     dep_id INTEGER(11),
     FOREIGN KEY (dep_id)
         REFERENCES department(id)
@@ -54,14 +54,14 @@ VALUES ("Sales Manager", 167342.50, 1),
 
 
 INSERT INTO employee(first_name, last_name, role_id, manager_id) 
-VALUES ("John", "Travolta", 1), 
-       ("L.Ron", "Hubbard", 2),
-       ("Tom", "Cruise", 3),
-       ("Leah", "Remini", 4),
-       ("Kirstie", "Allie", 1, 1),
+VALUES ("John", "Travolta", 1, NULL), 
+       ("L.Ron", "Hubbard", 2, NULL),
+       ("Tom", "Cruise", 3, NULL),
+       ("Leah", "Remini", 4, NULL),
+        ("David", "Miscavige", 1, 1),  
        ("Kelly", "Preston", 1, 1),
        ("Laura", "Prepon", 2, 2),
-       ("David", "Miscavige", 2, 2),
+        ("Kirstie", "Allie", 2, 2),
        ("Elisabeth", "Moss", 3, 3),
        ("Anne", "Archer", 3, 3),
         ("Juliette", "Lewis", 4, 4),
