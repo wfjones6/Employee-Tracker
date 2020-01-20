@@ -21,12 +21,78 @@ connection.connect(function(err) {
   // createProduct();
 });
 
-function createDepartment() {
+questionsIntro();
+
+function questionsIntro() {
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'action',
+        message: 'What do you want to do?',
+        choices: [
+          {
+            name: 'view employees',
+            value: 'view_employees'
+          },
+          {
+            name: 'view departments',
+            value: 'view_departments'
+          },
+          {
+            name: 'add departments',
+            value: 'add_departments'
+          }
+        ],
+      },
+    ])
+    .then(answers => {
+      // if (answers.action === 'view_departments') {
+      //   readDepartments();
+      // } else if (answers.action === 'view_employees') {
+      //   readEmployees();
+      // }
+
+      switch (answers.action) {
+        case 'view_employees':
+          return readEmployees();
+        
+        case 'view_departments':
+          return readDepartments();
+
+        case 'add_departments':
+          return addDepartment();  
+
+        default:
+          return quit();
+      }
+    });
+}
+
+async function addDepartment() {
+
+  inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: 'Department name?'
+        }
+      ])
+      .then(answers => {
+        createDepartment(answers.name);
+      })
+      .then(() => {
+        readDepartments();
+      });
+}
+
+function createDepartment(name) {
   console.log("Inserting a new department...\n");
   var query = connection.query(
     "INSERT INTO departments SET ?",
     {
-      dep_name: "test department"
+      dep_name: name
     },
     function(err, res) {
       if (err) throw err;
@@ -101,12 +167,12 @@ function updateRole(salaryNum, idNum) {
 
 
 
-function readDepartments() {
+function readDepartments(cb) {
   console.log("Selecting all departments...\n");
   connection.query("SELECT * FROM department", function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     // connection.end(); add a separate function called stop
   });
 }
@@ -116,7 +182,7 @@ function readRoles() {
   connection.query("SELECT * FROM em_role", function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     // connection.end(); add a separate function called stop
   });
 }
@@ -126,7 +192,9 @@ function readEmployees() {
   connection.query("SELECT * FROM employee", function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     // connection.end(); add a separate function called stop
   });
 }
+
+

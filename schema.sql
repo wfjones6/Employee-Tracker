@@ -7,7 +7,7 @@ USE employee_tracker;
 CREATE TABLE department
 (
     id INTEGER(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    dep_name VARCHAR(30)
+    name VARCHAR(30)
 );
 
 CREATE TABLE em_role
@@ -36,7 +36,7 @@ CREATE TABLE employee
         ON DELETE SET NULL
 );
 
-INSERT INTO department(dep_name) 
+INSERT INTO department(name) 
 VALUES ("Sales"), 
        ("Engineering"),
        ("Finance"),
