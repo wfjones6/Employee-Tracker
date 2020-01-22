@@ -46,6 +46,18 @@ function questionsIntro() {
           {
             name: 'add departments',
             value: 'add_departments'
+          },
+          {
+            name: 'add roles',
+            value: 'add_roles'
+          },
+          {
+            name: 'add employees',
+            value: 'add_employees'
+          },
+          {
+            name: 'update employee roles',
+            value: 'update_employees'
           }
         ],
       },
