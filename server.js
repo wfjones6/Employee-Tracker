@@ -40,6 +40,10 @@ function questionsIntro() {
             value: 'view_departments'
           },
           {
+            name: 'view roles',
+            value: 'view_roles'
+          },
+          {
             name: 'add departments',
             value: 'add_departments'
           }
@@ -59,6 +63,9 @@ function questionsIntro() {
         
         case 'view_departments':
           return readDepartments();
+
+        case 'view_roles':
+          return readRoles();
 
         case 'add_departments':
           return addDepartment();  
