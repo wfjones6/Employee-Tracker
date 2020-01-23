@@ -58,6 +58,10 @@ function questionsIntro() {
           {
             name: 'update employee roles',
             value: 'update_employees'
+          },
+          {
+            name: 'quit',
+            value: 'quit'
           }
         ],
       },
@@ -82,8 +86,9 @@ function questionsIntro() {
         case 'add_departments':
           return addDepartment();  
 
+        case 'quit':
         default:
-          return quit();
+          process.exit();
       }
     });
 }
