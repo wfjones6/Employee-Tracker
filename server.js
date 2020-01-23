@@ -72,7 +72,7 @@ function questionsIntro() {
       switch (answers.action) {
         case 'view_employees':
           return readEmployees();
-        
+
         case 'view_departments':
           return readDepartments();
 
@@ -89,7 +89,6 @@ function questionsIntro() {
 }
 
 async function addDepartment() {
-
   inquirer
       .prompt([
         {
@@ -101,26 +100,21 @@ async function addDepartment() {
       .then(answers => {
         createDepartment(answers.name);
       })
-      .then(() => {
-        readDepartments();
-      });
 }
 
-function createDepartment(name) {
+function createDepartment(newName) {
   console.log("Inserting a new department...\n");
-  var query = connection.query(
-    "INSERT INTO departments SET ?",
-    {
-      dep_name: name
-    },
-    function(err, res) {
-      if (err) throw err;
-      console.log(res.affectedRows + " department inserted!\n");
-    }
-  );
 
-  // logs the actual query being run
-  console.log(query.sql);
+  connection.query("INSERT INTO department SET ?", 
+      {
+        name: newName
+      }, 
+      function(err, res) {
+        if (err) throw err;
+        console.log(res.affectedRows + " department inserted!\n");
+        questionIntro();
+      }
+    );
 }
 
 function createRoles() {
@@ -137,9 +131,6 @@ function createRoles() {
       console.log(res.affectedRows + " role inserted!\n");
     }
   );
-
-  // logs the actual query being run
-  console.log(query.sql);
 }
 
 function createEmployee() {
@@ -157,9 +148,6 @@ function createEmployee() {
       console.log(res.affectedRows + " employee inserted!\n");
     }
   );
-
-  // logs the actual query being run
-  console.log(query.sql);
 }
 
 function updateRole(salaryNum, idNum) {
@@ -179,12 +167,7 @@ function updateRole(salaryNum, idNum) {
       console.log(res.affectedRows + " salary updated!\n");
     }
   );
-
-  // logs the actual query being run
-  console.log(query.sql);
 }
-
-
 
 function readDepartments(cb) {
   console.log("Selecting all departments...\n");
@@ -192,28 +175,33 @@ function readDepartments(cb) {
     if (err) throw err;
     // Log all results of the SELECT statement
     console.table(res);
-    // connection.end(); add a separate function called stop
+
+    questionsIntro();
   });
 }
 
 function readRoles() {
   console.log("Selecting all roles...\n");
+
   connection.query("SELECT * FROM em_role", function(err, res) {
     if (err) throw err;
+
     // Log all results of the SELECT statement
     console.table(res);
-    // connection.end(); add a separate function called stop
+    // connection.end; add a separate function called stop
+    questionsIntro();
   });
 }
 
 function readEmployees() {
   console.log("Selecting all employees...\n");
-  connection.query("SELECT * FROM employee", function(err, res) {
+
+  connection.query("SELECT first_name, last_name FROM employee", function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
     console.table(res);
     // connection.end(); add a separate function called stop
+ 
+    questionsIntro();
   });
 }
-
-
